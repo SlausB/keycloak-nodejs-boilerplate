@@ -1,6 +1,6 @@
 # Setup
 
-Install `docker`, `docker-compose` and:
+Install [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/), then:
 ```
 git clone https://github.com/SlausB/keycloak-nodejs-boilerplate.git
 cd keycloak-nodejs-boilerplate
