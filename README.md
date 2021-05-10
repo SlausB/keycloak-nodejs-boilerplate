@@ -17,7 +17,7 @@ cd keycloak-nodejs-boilerplate
     - `Temporary` -> `Off`
 ### Try it
 Open http://localhost:8198/ in browser:
-It will ask for login/password: enter `Alice`/`password` -> `Access denied` page bangs
+It will ask for login/password: enter `Alice`/`password` -> `Access denied` page bangs. `keycloak-connect` outputs `Could not obtain grant code: Error: connect ECONNREFUSED 127.0.0.1:8080` to console.
 
 # How Keycloak was configured
 
