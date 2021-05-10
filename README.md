@@ -9,6 +9,7 @@ cd keycloak-nodejs-boilerplate
 
 ### Client Credentials
 - Open http://localhost:8080/auth/admin
+- Enter `admin`/`admin` credentials
 - `Clients` -> `nodejs` -> `Credentials` -> `Regenerate Secret` -> copy-paste into `./src/index.ts:~18` where it's currently `"secret": "0ea73bba-57d9-404b-86a2-58bf3aacb7fd"` -> hit `Ctrl+S` to recompile
 ### Try it
 - Open http://localhost:8198/ in browser
