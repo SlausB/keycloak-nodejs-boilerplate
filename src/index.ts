@@ -15,7 +15,7 @@ const keycloak = new Keycloak(
         "resource": "nodejs",
         //@ts-ignore
         "credentials": {
-            "secret": "f596490d-ce6e-46bf-bcf3-e98a9d9b00fe"
+            "secret": "0ea73bba-57d9-404b-86a2-58bf3aacb7fd"
         },
         "use-resource-role-mappings": true,
         "confidential-port": 0,

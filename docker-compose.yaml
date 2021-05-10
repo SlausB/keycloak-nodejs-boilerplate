@@ -10,16 +10,30 @@ services:
             - KEYCLOAK_IMPORT=/config/import-realm.json
             - PROXY_ADDRESS_FORWARDING=true  #important for reverse proxy
             - JDBC_PARAMS=enabledTLSProtocols=TLSv1.2 #workaround for aurora
+            - DB_VENDOR=postgres
+            - DB_ADDR=db
+            - DB_PORT=5432
+            - DB_DATABASE=keycloak
+            - DB_USER=keycloak
+            - DB_PASSWORD=keycloak
         ports:
             - 8080:8080
-        #network_mode: host
+        depends_on:
+        - db
+
+    db:
+        image: postgres:9.6
+        environment:
+            POSTGRES_USER: keycloak
+            POSTGRES_PASSWORD: keycloak
+        volumes:
+            - ./var/data:/var/lib/postgresql/data
     
     node:
         build:
             context: .
             dockerfile: ./gosu_node.Dockerfile
-        #ports:
-            #- 8198:8198
+        # keycloak-connect talks to Keycloak internally, so unless we want to modify /etc/hosts (on both host and containers) we have to allow Node.js access Keycloak as localhost:
         network_mode: host
         environment:
             - LOCAL_USER_ID
