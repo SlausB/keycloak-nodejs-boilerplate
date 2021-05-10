@@ -17,7 +17,8 @@ cd keycloak-nodejs-boilerplate
     - `Temporary` -> `Off`
 ### Try it
 Open http://localhost:8198/ in browser:
-It will ask for login/password: enter `Alice`/`password` -> `Access denied` page bangs. `keycloak-connect` outputs `Could not obtain grant code: Error: connect ECONNREFUSED 127.0.0.1:8080` to console.
+It will ask for login/password: enter `Alice`/`password` -> `Access denied` page bangs. `keycloak-connect` outputs `Could not obtain grant code: Error: 401:Unauthorized` to console while `Keycloak` says `WARN  [org.keycloak.events] (default task-8) type=CODE_TO_TOKEN_ERROR, realmId=kingdom, clientId=nodejs, userId=null, ipAddress=172.23.0.1, error=invalid_client_credentials, grant_type=authorization_code` logging event:
+![alt CODE_TO_TOKEN_ERROR](./CODE_TO_TOKEN_ERROR.png)
 
 # How Keycloak was configured
 
