@@ -9,32 +9,18 @@ services:
             - KEYCLOAK_PASSWORD=admin
             - KEYCLOAK_IMPORT=/config/import-realm.json
             - PROXY_ADDRESS_FORWARDING=true  #important for reverse proxy
-            - DB_VENDOR=postgres
-            - DB_ADDR=db
-            - DB_PORT=5432
-            - DB_DATABASE=keycloak
-            - DB_USER=keycloak
-            - DB_PASSWORD=keycloak
             - JDBC_PARAMS=enabledTLSProtocols=TLSv1.2 #workaround for aurora
         ports:
             - 8080:8080
-        depends_on:  
-            - db
-
-    db:    
-        image: postgres:9.6
-        environment:
-            POSTGRES_USER: keycloak
-            POSTGRES_PASSWORD: keycloak
-        volumes:
-            - ./var/data:/var/lib/postgresql/data
+        #network_mode: host
     
     node:
         build:
             context: .
             dockerfile: ./gosu_node.Dockerfile
-        ports:
-            - 8198:8198
+        #ports:
+            #- 8198:8198
+        network_mode: host
         environment:
             - LOCAL_USER_ID
         volumes:

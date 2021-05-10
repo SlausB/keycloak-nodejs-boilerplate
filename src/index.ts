@@ -1,6 +1,9 @@
 import express from 'express'
 import session from 'express-session'
 import Keycloak from 'keycloak-connect'
+const cors = require('cors')
+
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
 
 const memoryStore = new session.MemoryStore()
 const keycloak = new Keycloak(
@@ -14,11 +17,14 @@ const keycloak = new Keycloak(
         "credentials": {
             "secret": "f596490d-ce6e-46bf-bcf3-e98a9d9b00fe"
         },
-        "confidential-port": 0
+        "use-resource-role-mappings": true,
+        "confidential-port": 0,
+        "policy-enforcer": {},
     }
 )
 
 const app = express();
+app.use(cors());
 
 app.use(session({
     secret: 'keycloak-nodejs-boilerplate Secret',
